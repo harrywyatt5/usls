@@ -410,14 +410,7 @@ def export_vision_encoder(
         output_names=["fpn_feat_0", "fpn_feat_1", "fpn_feat_2", "fpn_pos_2"],
         opset_version=17,
         do_constant_folding=True,
-        dynamo=False,
-        dynamic_axes={
-            "images": {0: "batch"},
-            "fpn_feat_0": {0: "batch"},
-            "fpn_feat_1": {0: "batch"},
-            "fpn_feat_2": {0: "batch"},
-            "fpn_pos_2": {0: "batch"},
-        },
+        dynamo=False
     )
 
 
@@ -435,13 +428,7 @@ def export_text_encoder(model: Sam3Model, output_dir: Path, device: str = "cuda"
         output_names=["text_features", "text_mask"],
         opset_version=17,
         do_constant_folding=True,
-        dynamo=False,
-        dynamic_axes={
-            "input_ids": {0: "batch"},
-            "attention_mask": {0: "batch"},
-            "text_features": {0: "batch"},
-            "text_mask": {0: "batch"},
-        },
+        dynamo=False
     )
 
 
@@ -486,21 +473,7 @@ def export_decoder(
         output_names=["pred_masks", "pred_boxes", "pred_logits", "presence_logits"],
         opset_version=17,
         do_constant_folding=True,
-        dynamo=False,
-        dynamic_axes={
-            "fpn_feat_0": {0: "batch"},
-            "fpn_feat_1": {0: "batch"},
-            "fpn_feat_2": {0: "batch"},
-            "fpn_pos_2": {0: "batch"},
-            "text_features": {0: "batch"},
-            "text_mask": {0: "batch"},
-            "input_boxes": {0: "batch", 1: "num_boxes"},
-            "input_boxes_labels": {0: "batch", 1: "num_boxes"},
-            "pred_masks": {0: "batch"},
-            "pred_boxes": {0: "batch"},
-            "pred_logits": {0: "batch"},
-            "presence_logits": {0: "batch"},
-        },
+        dynamo=False
     )
 
 
