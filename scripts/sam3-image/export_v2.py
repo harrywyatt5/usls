@@ -456,8 +456,8 @@ def export_decoder(
             torch.randn(1, 256, fpn2_h, fpn2_w, device=device),
             torch.randn(1, 32, 256, device=device),
             torch.ones(1, 32, dtype=torch.bool, device=device),
-            torch.rand(1, 5, 4, device=device),
-            torch.ones(1, 5, dtype=torch.long, device=device),
+            torch.rand(1, 1, 4, device=device),
+            torch.ones(1, 1, dtype=torch.long, device=device),
         ),
         str(output_dir / "decoder.onnx"),
         input_names=[
